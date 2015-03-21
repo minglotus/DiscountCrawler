@@ -1,2 +1,2 @@
 # DiscountCrawler
-For discount data crawling
+Digging Technique Which Home Strong?

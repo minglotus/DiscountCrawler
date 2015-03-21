@@ -16,7 +16,7 @@ class DiscountPipeline(object):
 class JsonWithEncodingPipeline(object):
 
     def __init__(self):
-        self.file = codecs.open('jdItems.json', 'wb', encoding='utf-8')
+        self.file = codecs.open('jd.json', 'wb', encoding='utf-8')
         self.file.write('{\n"item":[\n')
 
     def process_item(self, item, spider):
@@ -24,6 +24,6 @@ class JsonWithEncodingPipeline(object):
         self.file.write(line)
         return item
 
-    def spider_closed(self, spider):
-        self.file.write(']\n}')
+    def close_spider(self, spider):
+        self.file.write('{}\n]\n}')
         self.file.close()

@@ -17,3 +17,4 @@ class DiscountItem(Item):
     url = Field()
     imgsrc = Field()
     discount = Field()
+    source = Field()

@@ -8,10 +8,15 @@ from discount.items import DiscountItem
 from scrapy.http import Request, Response
 import re
 
+
 def first_element(element_list):
     return element_list[0].strip() if isinstance(element_list, list) and len(element_list) > 0 else None
-def last_item(element_list):
+
+
+def last_element(element_list):
     return element_list[-1].strip() if isinstance(element_list, list) and len(element_list) > 0 else None
+
+
 class JDSpider(CrawlSpider):
     name = 'jd'
     allowed_domains = ['jd.com', 'p.3.cn']
@@ -21,11 +26,12 @@ class JDSpider(CrawlSpider):
     rules = (
         # Extract links matching 'category.php' (but not matching 'subsection.php')
         # and follow links from them (since no callback means follow=True by default).
-        Rule(LinkExtractor(allow=('http://xuan.jd.com/youhui/(.*?).html', '/youhui/(.*?).html'), ), callback='parse_youhui'),
-        Rule(LinkExtractor(allow=('http://xuan.jd.com/pianyi/(.*?).html', '/pianyi/(.*?).html'), ), callback='parse_pianyi'),
+        Rule(LinkExtractor(allow=('http://xuan.jd.com/youhui/(.*?).html', '/youhui/(.*?).html'), ),
+             callback='parse_youhui'),
+        Rule(LinkExtractor(allow=('http://xuan.jd.com/pianyi/(.*?).html', '/pianyi/(.*?).html'), ),
+             callback='parse_pianyi'),
 
     )
-
 
 
     def parse_youhui(self, response):
@@ -45,14 +51,15 @@ class JDSpider(CrawlSpider):
             item['source'] = u'京东京选/优惠'
             yield item
         pages = sel.xpath('/html/body/div[2]/div[1]/div[2]/div[1]/div[7]/div/a/@href').extract()
-        nextpage = last_item(pages)
+        nextpage = last_element(pages)
         if (nextpage):
             yield Request(self.base_url + nextpage)
 
     def parse_pianyi(self, response):
         sel = Selector(response)
         latest_entries = sel.xpath('//*[@id="latestO"]/ul/li')
-        category = first_element(sel.xpath('//li[@class="content-youhui-banner-list-item  yact "]/a/span/text()').extract())
+        category = first_element(
+            sel.xpath('//li[@class="content-youhui-banner-list-item  yact "]/a/span/text()').extract())
         for entry in latest_entries:
             item = DiscountItem()
             item['name'] = first_element(entry.xpath('div[3]/h4/a/text()').extract())
@@ -67,6 +74,6 @@ class JDSpider(CrawlSpider):
             item['source'] = u'京东京选/便宜'
             yield item
         pages = sel.xpath('//*[@id="latestO"]/div/div/a/@href').extract()
-        nextpage = last_item(pages)
+        nextpage = last_element(pages)
         if (nextpage):
             yield Request(self.base_url + nextpage)

@@ -22,12 +22,54 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		     <!-- Owl Carousel Assets -->
 		    <!-- Prettify -->
 		    <script src="js/owl.carousel.js"></script>
+		    <script>
+			    var loadinfo3 = function(data){
+				    for(var i = 0; i < data.length; i++){
+					    var text = $("<div class=\"grid1_of_3\"><a href=\"" + data[i].url +"\"><img src=\"" + data[i].imgsrc + "\" alt=\"image\" /><h3>" + data[i].name + "</h3><div class=\"price\"><h4>$" + data[i].price + "<span>indulge</span></h4></div><span class=\"b_btm\"></span></a></div>");
+				    	    $("#thirdpart").prepend(text);
+			    }
+		    }
+		    $(document).ready(function() {
+			$("body").append("<script src=\"/feature.json\"><\/script>");
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+				
+		});
+	    </script>
+		    <script>
+			    var loadinfo4 = function(data){
+				    for(var i = 0; i < data.length; i++){
+					    var text = $("<div class=\"grid1_of_3\"><a href=\"" + data[i].url +"\"><img src=\"" + data[i].imgsrc + "\" alt=\"image\" /><h3>" + data[i].name + "</h3><div class=\"price\"><h4>$" + data[i].price + "<span>indulge</span></h4></div><span class=\"b_btm\"></span></a></div>");
+				    	    $("#fourthpart").prepend(text);
+			    }
+		    }
+		    $(document).ready(function() {
+			$("body").append("<script src=\"/subfeature.json\"><\/script>");
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+				
+		});
+	    </script>
+
 		        <script>
 		    //$("p#ty").ready(function(){
 		    //}
-		    $(document).ready(function() {
-			
-		    //$('div').append("<p>Hello World.</p>");
+			var loadinfo2 = function(data){
+				for(var i = 0; i < data.length; i++){
+					var text = $("<div class = \"" + "item" + "\" onclick = \"location.href\'" + data[i].url + "\';\">");
+					text.append($("<div class=\"cau_left\">"));
+					text.append($("<img class=\"lazyOwl\" data-src=\"" + data[i].imgsrc + "\"" + "alt=\"image\">"));
+					text.append($("</div>"));
+					text.append($("<div class=\"cau_left\">"));
+					text.append($("<h4><a href=\"" + data[i].url + "\">" + data[i].name + "</a></h4>"));
+					text.append($("<a href=\"" + data[i].url + "\"" + "class=\"btn\">shop</a>"));
+					text.append($("</div>"));
+					$("#owl-demo").append(text);
+					}
 		      $("#owl-demo").owlCarousel({
 		        items : 4,
 		        lazyLoad : true,
@@ -39,8 +81,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			    pagination : false,
     			paginationNumbers: false,
 		      });
+				}
+		    $(document).ready(function() {
+			$("body").append("<script src=\"/rcmd.json\"><\/script>");
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+				
+		});
+	
+		    //$('div').append("<p>Hello World.</p>");
 		
-	    });
 		    </script>
 		   <!-- //Owl Carousel Assets -->
 		<!-- start top_js_button -->
@@ -71,7 +123,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						for(var i = 0; i < data.length; i++){
 								var text = $("<div id = \"" + divIdArray[i] + "\" class = \"da-slide\">");
 								text.append($("<h2>" + data[i].name+ "</h2>").css({fontSize: 30}));
-								text.append($("<p>" + "优惠:" + data[i].discount + "<br/>" +  "价格:" + data[i].price + "<br/> 来源:" + data[i].source + "<br/>"  +"概况:" + data[i].description + "</p>").css({fontSize:20, overflow: "auto", height: 115}));
+								text.append($("<p>" + "优惠:" + data[i].discount + "<br/>" +  "价格:" + data[i].price + "<br/> 来源:" + data[i].source + "<br/>"  +"概况:" + data[i].description + "</p>").css({fontSize:20, overflow: "auto", height: 135}));
+								text.append($("<a href=\"" + data[i].url + "\"" + " class=\"da-link\ id=\"" + divIdArray[i] + "link" +"\">" + "Shop Now</a>").css('top', 350));
+								text.append($("<div class=\"da-img\"><img src=\""+data[i].imgsrc+"\" alt=\"imageForItem\" /></div>"));
 									text.append($("</div>"));	
 									$("#da-slider").append(text);
 							}
@@ -112,17 +166,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_sub">
 		<div class="h_menu">
 			<ul>
-				<li class="active"><a href="index.html">Home</a></li> |
-				<li><a href="sale.html">sale</a></li> |
-				<li><a href="handbags.html">handbags</a></li> |
-				<li><a href="accessories.html">accessories</a></li> |
-				<li><a href="wallets.html">wallets</a></li> |
-				<li><a href="sale.html">sale</a></li> |
-				<li><a href="index.html">mens store</a></li> |
-				<li><a href="shoes.html">shoes</a></li> |
-				<li><a href="sale.html">vintage</a></li> |
-				<li><a href="service.html">services</a></li> |
-				<li><a href="contact.html">Contact us</a></li>
+				<li class="active"><a href="index.html">首页</a></li> |
+				<li><a href="sale.html">个护化妆</a></li> |
+				<li><a href="handbags.html">办公设备</a></li> |
+				<li><a href="accessories.html">图书图像</a></li> |
+				<li><a href="wallets.html">家居家装</a></li> |
+				<li><a href="sale.html">家用电器</a></li> |
+				<li><a href="index.html">日用百货</a></li> |
+				<li><a href="shoes.html">服饰鞋包</a></li> |
+				<li><a href="sale.html">母婴用品</a></li> |
+				<li><a href="service.html">汽车用品</a></li> |
+				<li><a href="contact.html">玩模乐器</a></li> |
+				<li><a href="computer.html">电脑数码</a></li> |
+				<li><a href="service.html">礼品钟表</a></li> |
+				<li><a href="contact.html">运动户外</a></li> |
+				<li><a href="computer.html">食品保健</a></li> |
+				<li><a href="other.html">其他分类</a></li>
 			</ul>
 		</div>
 		<div class="top-nav">
@@ -162,69 +221,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="wrap">
 <!----start-img-cursual---->
 	<div id="owl-demo" class="owl-carousel">
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c1.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded shoes</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c3.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded jeens</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c1.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded shoes</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded tees</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
-		<div class="item" onclick="location.href='details.html';">
-			<div class="cau_left">
-				<img class="lazyOwl" data-src="images/c3.jpg" alt="Lazy Owl Image">
-			</div>
-			<div class="cau_left">
-				<h4><a href="details.html">branded jeens</a></h4>
-				<a href="details.html" class="btn">shop</a>
-			</div>
-		</div>	
 	</div>
 	<!----//End-img-cursual---->
 </div>
@@ -241,70 +237,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="wrap">	
 	<div class="main">
 		<!-- start grids_of_3 -->
-		<div class="grids_of_3">
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic1.jpg" alt=""/>
-					<h3>branded shoes</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic2.jpg" alt=""/>
-					<h3>branded t-shirts</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic3.jpg" alt=""/>
-					<h3>branded tees</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
+		<div id="thirdpart" class="grids_of_3">
 			<div class="clear"></div>
 		</div>
-		<div class="grids_of_3">
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic4.jpg" alt=""/>
-					<h3>branded bags</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic5.jpg" alt=""/>
-					<h3>ems women bag</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
-			<div class="grid1_of_3">
-				<a href="details.html">
-					<img src="images/pic6.jpg" alt=""/>
-					<h3>branded cargos</h3>
-					<div class="price">
-						<h4>$300<span>indulge</span></h4>
-					</div>
-					<span class="b_btm"></span>
-				</a>
-			</div>
+		<div id="fourthpart" class="grids_of_3">
 			<div class="clear"></div>
 		</div>	
 		<!-- end grids_of_3 -->
@@ -397,7 +333,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
 		<!--end scroll_top_btn -->
 		<div class="copy">
-			<p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></p>
+			<p class="link">&copy;  All rights reserved | @ Computer Network Lab1</a></p>
 		</div>
 		<div class="clear"></div>
 	</div>

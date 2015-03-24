@@ -12,13 +12,19 @@ for line in f:
 	for x in range(0, linelen):
 		if(line[x] == '['):
 			break
+	for y in range(linelen - 1, -1, -1):
+		if(line[y] == ']'):
+			break;
 	parsedLine = line[x+1:]
 	#print parsedLine
-	itemArray = re.split('[{}]', parsedLine)
+	#print parsedLine
+
+#	itemArray = re.split('[{}]', parsedLine)
+	itemArray = parsedLine.split(',')
 	itemArrayLen = len(itemArray)
-	#print itemArrayLen
+	print itemArray[0]
 	filteredItemArray = filter(todelete,itemArray) 
 	itemArrayLen = len(filteredItemArray)
-	for x in range(0, itemArrayLen):
-		print filteredItemArray[x]
+	#for x in range(0, itemArrayLen):
+	#	print filteredItemArray[x]
 f.close()
